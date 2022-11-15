@@ -1,23 +1,30 @@
-import logo from './logo.svg';
+
 import './App.css';
+import {Routes, Route} from 'react-router-dom'
+import Footer from './components/footer/Footer'
+import Header from './components/header/Header'
+import HomeScreen from './components/home/HomeScreen'
+import AccountScreen from './components/account/AccountScreen';
+import AuthScreen from './components/auth/AuthScreen';
+import UserProductsScreen from './components/account/userProducts/UserProductsScreen';
+import CartScreen from './components/account/cart/CartScreen';
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+
+      <Routes>
+        <Route path='/' element={<HomeScreen />} />
+        <Route path='account' element={<AccountScreen />} />
+        <Route path='auth' element={<AuthScreen />} />
+        <Route path='userProducts' element={<UserProductsScreen />} />
+        <Route path='cart' element={<CartScreen />} />
+      </Routes>
+
+
+      <Footer />
     </div>
   );
 }
