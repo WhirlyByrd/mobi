@@ -2,7 +2,7 @@ const {sequelize} = require('../util/database')
 const {DataTypes} = require('sequelize')
 
 module.exports = {
-    Post: sequelize.define('product', {
+    Product: sequelize.define('product', {
         id:
         {
             type: DataTypes.INTEGER,
@@ -13,7 +13,7 @@ module.exports = {
         name: DataTypes.STRING,
         desc: DataTypes.TEXT,
         SKU: DataTypes.STRING,
-        price: DataTypes.DECIMAL,
+        price: DataTypes.DECIMAL
 
     })
 }

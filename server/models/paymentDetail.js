@@ -2,7 +2,7 @@ const {sequelize} = require('../util/database')
 const {DataTypes} = require('sequelize')
 
 module.exports = {
-    Post: sequelize.define('orderItems', {
+    PaymentDetail: sequelize.define('payment_details', {
         id:
         {
             type: DataTypes.INTEGER,
@@ -10,7 +10,8 @@ module.exports = {
             allowNull: false,
             primaryKey: true
         },
-        quantity: DataTypes.INTEGER,
-
+        amount: DataTypes.INTEGER,
+        provider: DataTypes.STRING,
+        status: DataTypes.STRING
     })
 }

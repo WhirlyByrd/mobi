@@ -3,7 +3,8 @@ const {CONNECTION_STRING} = process.env
 const Sequelize = require('sequelize')
 
 //object that comes from Sequelize class
-const sequelize = new Sequelize(CONNECTION_STRING, {
+const sequelize = new Sequelize(CONNECTION_STRING, 
+    {
     dialect: 'postgres',
     dialectOptions: {
         ssl: {
@@ -12,6 +13,4 @@ const sequelize = new Sequelize(CONNECTION_STRING, {
     }
 })
 
-module.exports = {
-    sequelize
-}
+module.exports = {sequelize}

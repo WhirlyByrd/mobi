@@ -2,7 +2,7 @@ const {sequelize} = require('../util/database')
 const {DataTypes} = require('sequelize')
 
 module.exports = {
-    userAddress: sequelize.define('userAddress', {
+    UserAddress: sequelize.define('userAddress', {
         id:
         {
             type: DataTypes.INTEGER,

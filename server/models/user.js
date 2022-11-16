@@ -14,7 +14,7 @@ module.exports = {
         password: DataTypes.STRING,
         email: DataTypes.STRING,
         firstName: DataTypes.STRING,
-        lastName: DataTypes.STRING,
+        lastName: DataTypes.STRING
        
     })
 }
