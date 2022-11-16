@@ -1,8 +1,12 @@
-import React from 'react'
+import React from "react"
 
 function AuthScreen() {
+
   return (
-    <div>AuthScreen</div>
+      <main>
+          <h1>Welcome!</h1>
+          
+      </main>
   )
 }
 

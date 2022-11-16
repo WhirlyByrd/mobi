@@ -48,4 +48,8 @@ table {
 	border-spacing: 0;
 }
 
-
+.App {
+	position: relative;
+	min-height:100vh;
+	padding-bottom: 150px;
+}
