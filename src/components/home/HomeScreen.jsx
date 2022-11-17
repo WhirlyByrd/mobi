@@ -2,7 +2,9 @@ import React from 'react'
 
 function HomeScreen() {
   return (
-    <div>HomeScreen</div>
+    <div>
+      <h1>Best Sellers</h1>
+    </div>
   )
 }
 

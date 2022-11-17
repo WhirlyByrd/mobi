@@ -11,8 +11,8 @@ module.exports = {
             primaryKey: true
         },
         username: DataTypes.STRING,
-        password: DataTypes.STRING,
         email: DataTypes.STRING,
+        password: DataTypes.STRING,
         firstName: DataTypes.STRING,
         lastName: DataTypes.STRING
        

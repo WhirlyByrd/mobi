@@ -12,14 +12,14 @@ module.exports = {
 
     register: async (req, res) => {
         try {
-            const {username, password, email} = req.body
+            const {username, email, password} = req.body
             let foundUser = await User.findOne({where: {username}})
             if (foundUser) {
                 res.status(400).send('That username already exists, please register with a different username')
             } else {
                 const salt = bcrypt.genSaltSync(10)
                 const hash = bcrypt.hashSync(password, salt)
-                const newUser = await User.create({username, hashedPass: hash, email})
+                let newUser = await User.create({username, email, password: hash})
                 const token = createToken(newUser.dataValues.username, newUser.dataValues.id)
                 const exp = Date.now() + 1000 * 60 * 60 * 48
                 res.status(200).send({
@@ -43,7 +43,7 @@ module.exports = {
             const {username, password} = req.body
             let foundUser = await User.findOne({where: {username}})
             if (foundUser) {
-                const isAuthenticated = bcrypt.compareSync(password, foundUser.hashedPass)
+                const isAuthenticated = bcrypt.compareSync(password, foundUser.password)
     
                 if (isAuthenticated) {
                     const token = createToken(foundUser.dataValues.username, foundUser.dataValues.id)

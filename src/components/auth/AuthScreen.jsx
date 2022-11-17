@@ -18,6 +18,7 @@ const AuthScreen = () => {
 
        const body = {
         username,
+        email,
         password
        }
  
