@@ -19,6 +19,12 @@ const {ProductInventory} = require('./models/productInventory')
 const {UserAddress} = require('./models/userAddress')
 const {UserPayment} = require('./models/userPayment')
 
+const {register, login} = require('./controllers/authCtrl')
+const {getAllProducts, getCurrentUserProducts, addProduct, editProduct, deleteProduct} = require('./controllers/products')
+const {isAuthenticated} = require('./middleware/isAuthenticated')
+
+//for cart items
+
 const app = express()
 
 app.use(express.json())
@@ -61,7 +67,22 @@ PaymentDetail.hasOne(OrderDetail)
 OrderDetail.belongsTo(PaymentDetail)
 
 
+//Endpoints
 
+//Auth
+app.post('/register', register)
+app.post('/login', login)
+
+//get products without authentication
+// app.get('/products', getAllProducts)
+
+// //CRUD Users products
+// app.get('/userproducts/:userId', getCurrentUserProducts)
+// app.post('/products', isAuthenticated, addProduct)
+// app.put('/products/id', isAuthenticated, editProduct)
+// app.delete('/products/:id', isAuthenticated, deleteProduct)
+
+//endpoints for cart items
 
 
 

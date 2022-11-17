@@ -8,8 +8,8 @@
 }
 
 .navbar-brand  {
-    font-size: 30px !important;
-    font-weight:600 !important;
+    font-size: 25px !important;
+    font-weight:800 !important;
 }
 
 .navbar-brand:hover {
@@ -18,8 +18,8 @@
 
 .logo {
     background-image: url('../../assets/white-whale-100.png');
-    width: 50px;
-    height: 50px;
+    width: 35px;
+    height: 35px;
     background-repeat: no-repeat;
     background-size: cover;
     margin-right:10px;
@@ -33,7 +33,8 @@
 }
 .navbar a{
     color: white;
-    font-size: 20px;
+    font-size: 16px;
+    font-weight:700;
 	text-decoration: none;
 }
 
@@ -42,7 +43,7 @@
 }
 
 .navbar a.active {
-    color:#66D8F2;
+    color:#66D8F2 !important;
 }
 
 .navbar {
