@@ -50,8 +50,8 @@ module.exports = {
 
     addProduct: async (req, res) => {
         try {
-            const {name, desc, SKU, price, userId} = req.body
-            await Product.create({name, desc, SKU, price, userId})
+            const {name, desc, img, price, userId} = req.body
+            await Product.create({name, desc, img, price, userId})
             res.sendStatus(200)
         } catch (error) {
             console.log('ERROR in addProduct')
@@ -63,9 +63,9 @@ module.exports = {
     editProduct: async (req, res) => {
        try {
             const {id} = req.params
-            const {name, desc, SKU, price} = req.body
+            const {name, desc, img, price} = req.body
             await Product.update({
-                name, desc, SKU, price}, {
+                name, desc, img, price}, {
                     where: {id: +id}
                 })
             res.sendStatus(200)
@@ -82,6 +82,7 @@ module.exports = {
             await Product.destroy({
                 where: {id: +id}
             })
+            res.sendStatus(200)
         } catch (error) {
             console.log('ERROR in deleteProduct')
             console.log(error)

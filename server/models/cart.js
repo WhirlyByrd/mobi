@@ -1,6 +1,7 @@
 const {sequelize} = require('../util/database')
 const {DataTypes} = require('sequelize')
 
+
 module.exports = {
     Cart: sequelize.define('cart', {
         id:
@@ -10,6 +11,7 @@ module.exports = {
             allowNull: false,
             primaryKey: true
         },
-        total: DataTypes.DECIMAL,
+    
+        quantity: DataTypes.DECIMAL,
     })
 }

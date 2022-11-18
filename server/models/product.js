@@ -12,7 +12,7 @@ module.exports = {
         },
         name: DataTypes.STRING,
         desc: DataTypes.TEXT,
-        SKU: DataTypes.STRING,
+        img: DataTypes.STRING,
         price: DataTypes.DECIMAL
 
     })

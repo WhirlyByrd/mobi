@@ -12,9 +12,7 @@ module.exports = {
         },
         username: DataTypes.STRING,
         email: DataTypes.STRING,
-        password: DataTypes.STRING,
-        firstName: DataTypes.STRING,
-        lastName: DataTypes.STRING
+        password: DataTypes.STRING
        
     })
 }

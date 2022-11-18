@@ -1,6 +1,5 @@
-import {useState} from 'react'
+import {useState, useContext} from 'react'
 import axios from 'axios'
-import { useContext } from 'react'
 import AuthContext from '../../store/authContext'
  
 const AuthScreen = () => {
@@ -18,8 +17,8 @@ const AuthScreen = () => {
 
        const body = {
         username,
-        email,
-        password
+        password,
+        email
        }
  
       const url = 'http://localhost:4545'

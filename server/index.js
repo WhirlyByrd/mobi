@@ -9,22 +9,16 @@ const {sequelize} = require('./util/database')
 
 const {User} = require('./models/user')
 const {Cart} = require('./models/cart')
-const {CartItem} = require('./models/cartItem')
-const {OrderDetail} = require('./models/orderDetail')
-const {OrderItem} = require('./models/orderItem')
-const {PaymentDetail} = require('./models/paymentDetail')
 const {Product} = require('./models/product')
-const {ProductCategory} = require('./models/productCategory')
-const {ProductInventory} = require('./models/productInventory')
 const {UserAddress} = require('./models/userAddress')
-const {UserPayment} = require('./models/userPayment')
+
 
 const {register, login} = require('./controllers/authCtrl')
 const {getAllProducts, getProductById, getCurrentUserProducts, addProduct, editProduct, deleteProduct} = require('./controllers/products')
 const {isAuthenticated} = require('./middleware/isAuthenticated')
 
 //for cart items
-const {getCart, addCartItem, deleteCartItem} = require('./controllers/cart')
+const {newItem, getCart, editCart, deleteCartItem} = require('./controllers/cart')
 
 const app = express()
 
@@ -37,35 +31,20 @@ Product.belongsTo(User)
 User.hasOne(Cart)
 Cart.belongsTo(User)
 
-User.hasOne(UserPayment)
-UserPayment.belongsTo(User)
-
 User.hasOne(UserAddress)
 UserAddress.belongsTo(User)
 
-User.hasMany(OrderDetail)
-OrderDetail.belongsTo(User)
+Cart.hasMany(Product)
+Product.belongsTo(Cart)
 
-Cart.hasMany(CartItem)
-CartItem.belongsTo(Cart)
 
-ProductCategory.hasMany(Product)
-Product.belongsTo(ProductCategory)
 
-ProductInventory.hasMany(Product)
-Product.belongsTo(ProductInventory)
 
-Product.hasMany(CartItem)
-CartItem.belongsTo(Product)
 
-Product.hasMany(OrderItem)
-OrderItem.belongsTo(Product)
 
-OrderDetail.hasMany(OrderItem)
-OrderItem.belongsTo(OrderDetail)
 
-PaymentDetail.hasOne(OrderDetail)
-OrderDetail.belongsTo(PaymentDetail)
+
+
 
 
 //Endpoints
@@ -85,14 +64,16 @@ app.put('/products/:id', isAuthenticated, editProduct)
 app.delete('/products/:id', isAuthenticated, deleteProduct)
 
 //endpoints for cart 
+app.post('/carts/item', isAuthenticated, newItem)
 app.get('/carts/:userId',isAuthenticated, getCart)
-// app.post('/carts/:cartItemId', isAuthenticated, addCartItem)
-app.delete('/carts/:cartItemId', isAuthenticated, deleteCartItem)
+app.put('/carts/:cartId', isAuthenticated, editCart)
+app.delete('/carts/:cartId', isAuthenticated, deleteCartItem)
 
 
 
 
-//remove force: true when done building
+
+//remove force: true when done building {force:true}
 sequelize.sync()
 .then(() => {
     app.listen(SERVER_PORT, console.log(`Listening to server port ${SERVER_PORT}`));
