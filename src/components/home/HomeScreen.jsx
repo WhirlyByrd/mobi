@@ -1,10 +1,13 @@
 import React from 'react'
+import AdBanner from './banner/AdBanner'
+import ShopScreen from '../shop/ShopScreen'
 
 function HomeScreen() {
   return (
-    <div>
-      <h1>Best Sellers</h1>
-    </div>
+    <main>
+      <AdBanner />
+      <ShopScreen />
+    </main>
   )
 }
 
