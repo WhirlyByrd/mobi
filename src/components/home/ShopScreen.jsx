@@ -37,7 +37,7 @@ const ShopScreen = () => {
   const mappedProducts = products.map(product => {
     return (
       <div className="card" >
-        <img className="card-img-top" url={`"${product.img}"`} alt={product.name}></img>
+        <img className="card-img-top" src={product.img} alt={product.name}/>
         <div className="card-body">
           <h3 className="card-title">{product.name}</h3>
           <h4 className="card-title">{product.price}</h4>

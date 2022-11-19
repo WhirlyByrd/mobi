@@ -2,6 +2,7 @@ import React, {useState, useContext} from 'react'
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
 import AuthContext from '../../../store/authContext'
+import {Form, Button} from 'react-bootstrap'
 
 function NewProductScreen() {
   const {token, userId} = useContext(AuthContext)
@@ -34,13 +35,16 @@ function NewProductScreen() {
 
   return (
     <main>
-      <form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
+
+        <Button>Upload Photo</Button>
+        
         <input
         type='text'
         placeholder='Enter Image URL'
         value={img}
         onChange={e => setImage(e.target.value)}
-        />
+        /> 
         <input
         type='text'
         placeholder='Enter Product Name'
@@ -60,7 +64,7 @@ function NewProductScreen() {
         onChange={e => setPrice(e.target.value)}
         />
         <button>Create Product</button>
-      </form>
+      </Form>
     </main>
   )
 }
