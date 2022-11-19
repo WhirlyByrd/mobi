@@ -1,6 +1,6 @@
 import React from 'react'
 import AdBanner from './banner/AdBanner'
-import ShopScreen from '../shop/ShopScreen'
+import ShopScreen from './ShopScreen'
 
 function HomeScreen() {
   return (
