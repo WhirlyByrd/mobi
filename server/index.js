@@ -22,7 +22,7 @@ const {getAllProducts, getProductById, getCurrentUserProducts, addProduct, editP
 const {isAuthenticated} = require('./middleware/isAuthenticated')
 
 //for cart items
-const {newItem, getCart, editCart, deleteCartItem} = require('./controllers/cart')
+const {addToCart, getCart, editCart, deleteCartItem} = require('./controllers/cart')
 
 const app = express()
 
@@ -46,6 +46,15 @@ UserAddress.belongsTo(User)
 
 Cart.hasMany(Product)
 Product.belongsTo(Cart)
+
+Product.hasMany(Cart)
+
+// User.hasMany(Product).hasOne(Cart)
+// Cart.belongsTo(User).hasMany(Product)
+// Product.belongsTo(User).hasMany(Cart)
+
+
+
 
 
 
@@ -74,7 +83,7 @@ app.put('/products/:id', isAuthenticated, editProduct)
 app.delete('/products/:id', isAuthenticated, deleteProduct)
 
 //endpoints for cart 
-app.post('/carts/item', isAuthenticated, newItem)
+app.post('/carts/item', isAuthenticated, addToCart)
 app.get('/carts/:userId',isAuthenticated, getCart)
 app.put('/carts/:cartId', isAuthenticated, editCart)
 app.delete('/carts/:cartId', isAuthenticated, deleteCartItem)

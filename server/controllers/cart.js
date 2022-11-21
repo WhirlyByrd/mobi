@@ -6,12 +6,13 @@ const {Product} = require('../models/product')
 module.exports = {
 
     //CREATE
-    newItem: async (req, res) => {
+    addToCart: async (req, res) => {
         try {
             const {userId, productId, quantity} = req.body
-            Cart.create({userId, productId, quantity})
-            
-            res.sendStatus(200)
+            console.log(productId)
+            let product = await Cart.create({userId, productId, quantity})
+            console.log(product)
+            res.status(200).send(product)
         } catch (error) {
             console.log('ERROR IN Cart')
             console.log(error)
@@ -57,13 +58,14 @@ module.exports = {
     getCart: async (req, res) =>{
         try {
             const {userId} = req.params
-            const cart = await Cart.findOne({
+            const cart = await Cart.findAll({
                 where: {userId}, include: [{
                     model: Product,
                     required: true,
-                    attributes: [`name`, `desc`, `img`, `price`]
+                    attributes: [`img`,`name`, `price`, `desc`]
                 }]
             })
+            console.log('get cart', cart)
             res.status(200).send(cart)
         } catch (error) {
             console.log('ERROR IN getCart')
