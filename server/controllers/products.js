@@ -52,6 +52,7 @@ module.exports = {
         try {
             const {name, desc, img, price, userId} = req.body
             await Product.create({name, desc, img, price, userId})
+            console.log(req.body)
             res.sendStatus(200)
         } catch (error) {
             console.log('ERROR in addProduct')

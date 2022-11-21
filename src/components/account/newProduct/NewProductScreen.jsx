@@ -4,6 +4,8 @@ import {useNavigate} from 'react-router-dom'
 import AuthContext from '../../../store/authContext'
 import {Form, Button} from 'react-bootstrap'
 
+
+
 function NewProductScreen() {
   const {token, userId} = useContext(AuthContext)
   const navigate = useNavigate()
@@ -35,15 +37,14 @@ function NewProductScreen() {
 
   return (
     <main>
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit} >
 
-        <Button>Upload Photo</Button>
-        
         <input
         type='text'
-        placeholder='Enter Image URL'
+        placeholder='Insert Image URL'
+        name='img'
         value={img}
-        onChange={e => setImage(e.target.value)}
+        onChange={e => setImage(e.target.files[0])}
         /> 
         <input
         type='text'

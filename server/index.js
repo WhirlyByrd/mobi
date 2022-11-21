@@ -3,6 +3,10 @@ require('dotenv').config()
 const express = require('express');
 const cors = require('cors');
 
+// const fileupload = require('express-fileupload')
+
+
+
 
 const {SERVER_PORT} = process.env
 const {sequelize} = require('./util/database')
@@ -24,6 +28,12 @@ const app = express()
 
 app.use(express.json())
 app.use(cors())
+// app.use(
+//     fileupload({
+//         createdParentPath: true,
+//     })
+// )
+// app.use(express.urlencoded({ extended: true}));
 
 User.hasMany(Product)
 Product.belongsTo(User)
