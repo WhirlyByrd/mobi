@@ -65,7 +65,7 @@ app.post('/login', login)
 
 //get products without authentication
 app.get('/products', getAllProducts)
-app.get('products/:id', getProductById)
+app.get('/products/:id', getProductById)
 
 //CRUD Users products
 app.get('/userproducts/:userId', isAuthenticated, getCurrentUserProducts)

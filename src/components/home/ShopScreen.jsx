@@ -1,6 +1,6 @@
 import {useState, useEffect, useContext} from 'react'
 import axios from 'axios'
-import {useNavigate} from 'react-router-dom'
+import {useNavigate, useParams} from 'react-router-dom'
 import AuthContext from '../../store/authContext'
 import './ShopScreen.css'
 
@@ -9,9 +9,11 @@ const ShopScreen = () => {
   const {userId} = useContext(AuthContext)
   const [products, setProducts] = useState([])
   const navigate = useNavigate(AuthContext)
+  const {id} = useParams()
+  console.log(id)
 
-  const goToDetail = () => {
-        navigate('/productDetail')
+  const goToDetail = (id) => {
+        navigate(`/productDetail/${id}`)
   }
 
 
@@ -42,7 +44,7 @@ const ShopScreen = () => {
           <h3 className="card-title">{product.name}</h3>
           <h4 className="card-title">{product.price}</h4>
           <p className="card-text">{product.desc}</p>
-          <button onClick={goToDetail} className="btn btn-primary">
+          <button onClick={() => goToDetail(product.id)} className="btn btn-primary">
             See Details
           </button>
         </div>

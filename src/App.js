@@ -24,7 +24,7 @@ function App() {
       <Routes>
       <Route path='/' element={<HomeScreen />} />
 
-        <Route path='/productDetail' element={<ProductDetailScreen />} />
+        <Route path='/productDetail/:id' element={<ProductDetailScreen />} />
 
         <Route path='/auth' element={!authCtx.token ?  <AuthScreen /> : <Navigate to='/'/>} />
 
