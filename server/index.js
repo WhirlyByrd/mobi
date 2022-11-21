@@ -3,7 +3,7 @@ require('dotenv').config()
 const express = require('express');
 const cors = require('cors');
 
-// const fileupload = require('express-fileupload')
+//const imageupload = require('express-fileupload')
 
 
 
@@ -68,7 +68,7 @@ app.get('/products', getAllProducts)
 app.get('products/:id', getProductById)
 
 //CRUD Users products
-app.get('/userproducts/:userId', getCurrentUserProducts)
+app.get('/userproducts/:userId', isAuthenticated, getCurrentUserProducts)
 app.post('/products', isAuthenticated, addProduct)
 app.put('/products/:id', isAuthenticated, editProduct)
 app.delete('/products/:id', isAuthenticated, deleteProduct)

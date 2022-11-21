@@ -2,7 +2,7 @@ import React, {useState, useContext} from 'react'
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
 import AuthContext from '../../../store/authContext'
-import {Form, Button} from 'react-bootstrap'
+import {Form} from 'react-bootstrap'
 
 
 
@@ -42,9 +42,8 @@ function NewProductScreen() {
         <input
         type='text'
         placeholder='Insert Image URL'
-        name='img'
         value={img}
-        onChange={e => setImage(e.target.files[0])}
+        onChange={e => setImage(e.target.value)}
         /> 
         <input
         type='text'
