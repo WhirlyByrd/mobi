@@ -12,7 +12,8 @@ module.exports = {
         try {
             const {userId, productId, quantity} = req.body
             console.log(productId)
-            let product = await Cart.create({userId, productId, quantity})
+            let product = await Cart.create({userId, productId, quantity:1})
+            
             console.log(product)
             res.status(200).send(product)
         } catch (error) {

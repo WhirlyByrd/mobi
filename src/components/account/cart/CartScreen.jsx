@@ -1,22 +1,20 @@
-import {useState, useEffect, useContext} from 'react'
+import {useState, useEffect, useContext, useCallback} from 'react'
 import axios from 'axios'
 import {useParams} from 'react-router-dom'
 import AuthContext from '../../../store/authContext'
+import {Card, Button} from 'react-bootstrap'
 
 function CartScreen() {
   const {token, userId} = useContext(AuthContext)
   const [products, setProducts] = useState([])
   const {id} = useParams()
-
   
- 
-
   let url = "http://localhost:4545"
 
-  //view users cart items
 
-  useEffect(() => {
-    console.log("product")
+
+  //get products
+  const getProducts = useCallback(() => {
     axios.get(`${url}/carts/${userId}`, {
       headers: {
         authorization: token
@@ -35,23 +33,50 @@ function CartScreen() {
       console.log(err)
     })
   }, [userId])
+  
+
+
+  //delete product
+  const deleteProduct = (id) => {
+    axios.delete(`${url}/carts/${id}`, {
+      headers: {
+        authorization: token
+      }
+    })
+      .then(() => {
+        getProducts()
+      })
+      .catch(err => {console.log(err)})
+  }
+
+  //update quantity of product, if same product id is added (add that to quantity field)
+
+  //clear cart
+ 
+ 
+  useEffect(() => {
+    getProducts()
+  }, [])
+   
 
   console.log(products)
 
 
 const mappedProducts = products.map(product => {
+
     return (
-      <div className="card" >
+      <Card style={{ width: '20rem' }} >
         <img className="card-img-top" src={product.img} alt={product.name}/>
         <div className="card-body">
-          <h3 className="card-title">{product.name}</h3>
-          <h4 className="card-title">{product.price}</h4>
-          <p className="card-text">{product.desc}</p>
-          <button>
-            Delete Item
-          </button>
+          <Card.Title>{product.name}</Card.Title>
+          <h4 className="card-title">${product.price}</h4>
+          <Card.Text className="card-text">{product.desc}</Card.Text>
+          <Button>+</Button>
+          <Card.Text className="card-text">quantity</Card.Text>
+          <Button>-</Button>
+          <Button onClick={() => deleteProduct(product.id)}>Delete</Button>
         </div>
-      </div>
+      </Card>
     );
   })
 
