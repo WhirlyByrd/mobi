@@ -87,7 +87,7 @@ app.put('/products/:id', isAuthenticated, editProduct)
 app.delete('/products/:id', isAuthenticated, deleteProduct)
 
 //endpoints for cart 
-app.post('/carts/item', isAuthenticated, addToCart)
+app.post('/carts/product', isAuthenticated, addToCart)
 app.get('/carts/:userId',isAuthenticated, getCart)
 app.put('/carts/:cartId', isAuthenticated, editCart)
 app.delete('/carts/:cartId', isAuthenticated, deleteCartItem)

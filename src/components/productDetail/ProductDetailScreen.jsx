@@ -25,7 +25,7 @@ function ProductDetailScreen() {
 
   const addToCart = () => {
     
-      axios.post(`/carts/item`, {productId:id, userId}, 
+      axios.post(`/carts/product`, {productId:id, userId}, 
       {
           headers: {
             authorization: token
