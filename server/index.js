@@ -18,7 +18,7 @@ const {UserAddress} = require('./models/userAddress')
 
 
 const {register, login} = require('./controllers/authCtrl')
-const {getAllProducts, getProductById, getCurrentUserProducts, addProduct, editProduct, deleteProduct} = require('./controllers/products')
+const {getAllProducts, getProductById, getCurrentUserProducts, getCurrentUserProductById, addProduct, editProduct, deleteProduct} = require('./controllers/products')
 const {isAuthenticated} = require('./middleware/isAuthenticated')
 
 //for cart items
@@ -78,6 +78,10 @@ app.get('/products/:id', getProductById)
 
 //CRUD Users products
 app.get('/userproducts/:userId', isAuthenticated, getCurrentUserProducts)
+
+//single product
+app.get('/userproduct/:id/:userId', isAuthenticated, getCurrentUserProductById)
+
 app.post('/products', isAuthenticated, addProduct)
 app.put('/products/:id', isAuthenticated, editProduct)
 app.delete('/products/:id', isAuthenticated, deleteProduct)

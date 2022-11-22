@@ -10,7 +10,7 @@ module.exports = {
             allowNull: false,
             primaryKey: true
         },
-        img: DataTypes.STRING,
+        img: DataTypes.TEXT,
         name: DataTypes.STRING,
         desc: DataTypes.TEXT,
         price: DataTypes.DECIMAL

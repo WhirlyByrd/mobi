@@ -16,12 +16,12 @@ function NewProductScreen() {
   const [price, setPrice] = useState(0)
   //decimal?
   
-  
+  let url = 'http://localhost:4545'
 
   const handleSubmit = e => {
     e.preventDefault()
     
-    axios.post('/products', {img, name, desc, price, userId}, 
+    axios.post(`${url}/products`, {img, name, desc, price, userId}, 
     {
       headers: {
         authorization: token

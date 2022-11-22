@@ -12,7 +12,7 @@ module.exports = {
     isAuthenticated: (req, res, next) => {
         //set up a required header token
         const headerToken = req.get('Authorization')
-
+        console.log(headerToken, SECRET)
         //if there is no header token log an 401 error
         if (!headerToken) {
             console.log('ERROR IN auth middleware')

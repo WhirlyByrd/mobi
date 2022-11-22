@@ -4,7 +4,7 @@ import {useNavigate, useParams} from 'react-router-dom'
 import AuthContext from '../../store/authContext'
 
 
-function ProductDetail() {
+function ProductDetailScreen() {
   const {token, userId} = useContext(AuthContext)
   const [product, setProduct] = useState([])
   const navigate = useNavigate(AuthContext)
@@ -53,4 +53,4 @@ function ProductDetail() {
   )
 }
 
-export default ProductDetail
+export default ProductDetailScreen

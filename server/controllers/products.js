@@ -48,6 +48,25 @@ module.exports = {
         }
     },
 
+    getCurrentUserProductById: async (req, res) => {
+        try {
+            
+            const {userId} = req.params
+            const product = await Product.findAll({
+                where: {userId}, include: [{
+                    model: User,
+                    required: true,
+                    attributes: [`username`]
+                }] 
+            });
+            res.status(200).send(product)
+        } catch (error) {
+            console.log('ERROR IN getCurrentUserProductById')
+            console.log(error)
+            res.sendStatus(400)
+        }
+    },
+
     addProduct: async (req, res) => {
         try {
             const {name, desc, img, price, userId} = req.body

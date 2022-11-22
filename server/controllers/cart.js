@@ -3,6 +3,8 @@ const {Cart} = require('../models/cart')
 const {User} = require('../models/user')
 const {Product} = require('../models/product')
 
+const {sequelize} = require('../util/database')
+
 module.exports = {
 
     //CREATE
@@ -58,20 +60,25 @@ module.exports = {
     getCart: async (req, res) =>{
         try {
             const {userId} = req.params
-            const cart = await Cart.findAll({
-                where: {userId}, include: [{
-                    model: Product,
-                    required: true,
-                    attributes: [`img`,`name`, `price`, `desc`]
-                }]
-            })
-            console.log('get cart', cart)
-            res.status(200).send(cart)
+            // const cart = await Cart.findAll({
+            //     where: {userId}, include: [{
+            //         model: Product,
+            //         required: true,
+            //         attributes: [`img`,`name`, `price`, `desc`]
+            //     }]
+            // })
+            const cart = await sequelize.query(`
+            SELECT "cart"."id", "cart"."quantity", "cart"."createdAt", "cart"."updatedAt", "cart"."userId", "products"."id" AS "products.id", "products"."img" AS "products.img", "products"."name" AS "products.name", "products"."price" AS "products.price", "products"."desc" AS "products.desc" FROM "carts" AS "cart" LEFT OUTER JOIN "products" AS "products" ON "cart"."productId" = "products"."id" WHERE "cart"."userId" = '${userId}';
+            `)
+            console.log('get cart', cart[0])
+            res.status(200).send(cart[0])
         } catch (error) {
             console.log('ERROR IN getCart')
             console.log(error)
             res.sendStatus(400)
         }
+    
+            
     },
 
    

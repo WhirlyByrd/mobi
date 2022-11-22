@@ -10,6 +10,7 @@ import UserProductsScreen from './components/account/userProducts/UserProductsSc
 import CartScreen from './components/account/cart/CartScreen';
 import NewProductScreen from './components/account/newProduct/NewProductScreen';
 import ProductDetailScreen from './components/productDetail/ProductDetailScreen'
+import UserProductDetailScreen from './components/account/userProducts/UserProductDetailScreen'
 
 import {useContext} from 'react'
 import AuthContext from './store/authContext';
@@ -25,6 +26,7 @@ function App() {
       <Route path='/' element={<HomeScreen />} />
 
         <Route path='/productDetail/:id' element={<ProductDetailScreen />} />
+        <Route path='/userProductDetail/:id' element={<UserProductDetailScreen />} />
 
         <Route path='/auth' element={!authCtx.token ?  <AuthScreen /> : <Navigate to='/'/>} />
 
