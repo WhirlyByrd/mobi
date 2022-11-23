@@ -7,10 +7,12 @@ import {Card, Button} from 'react-bootstrap'
 function CartScreen() {
   const {token, userId} = useContext(AuthContext)
   const [products, setProducts] = useState([])
-  const {id} = useParams()
+  
   
   let url = "http://localhost:4545"
 
+
+  
 
 
   //get products
@@ -35,10 +37,15 @@ function CartScreen() {
   }, [userId])
   
 
+//send 200 request but item does not delete,
+// is index.js endpoint correct to delete the product
+// should it be '/carts/product/:id' instead?
+
 
   //delete product
-  const deleteProduct = (id) => {
-    axios.delete(`${url}/carts/${id}`, {
+  const deleteCartItem = (cartId) => {
+    
+    axios.delete(`${url}/carts/${cartId}`, {
       headers: {
         authorization: token
       }
@@ -53,17 +60,20 @@ function CartScreen() {
 
   //clear cart
  
- 
+  //can I add more functions to useEffect
   useEffect(() => {
     getProducts()
   }, [])
-   
+  
+  useEffect(() => {
+    deleteCartItem()
+  }, [])
 
   console.log(products)
 
 
 const mappedProducts = products.map(product => {
-
+    console.log(product)
     return (
       <Card style={{ width: '20rem' }} >
         <img className="card-img-top" src={product.img} alt={product.name}/>
@@ -74,7 +84,7 @@ const mappedProducts = products.map(product => {
           <Button>+</Button>
           <Card.Text className="card-text">quantity</Card.Text>
           <Button>-</Button>
-          <Button onClick={() => deleteProduct(product.id)}>Delete</Button>
+          <Button onClick={() => deleteCartItem(product.cartId)}>Delete</Button>
         </div>
       </Card>
     );

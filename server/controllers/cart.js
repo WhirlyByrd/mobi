@@ -69,7 +69,7 @@ module.exports = {
             //     }]
             // })
             const cart = await sequelize.query(`
-            SELECT "cart"."id", "cart"."quantity", "cart"."createdAt", "cart"."updatedAt", "cart"."userId", "products"."id", "products"."img" , "products"."name", "products"."price", "products"."desc"  FROM "carts" AS "cart" LEFT OUTER JOIN "products" AS "products" ON "cart"."productId" = "products"."id" WHERE "cart"."userId" = '${userId}';
+            SELECT "cart"."id" AS "cartId",  "cart"."quantity", "cart"."createdAt", "cart"."updatedAt", "cart"."userId", "products"."id", "products"."img" , "products"."name", "products"."price", "products"."desc"  FROM "carts" AS "cart" LEFT OUTER JOIN "products" AS "products" ON "cart"."productId" = "products"."id" WHERE "cart"."userId" = '${userId}';
             `)
             console.log('get cart', cart[0])
             res.status(200).send(cart[0])
