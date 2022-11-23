@@ -25,21 +25,26 @@ module.exports = {
 
     //UPDATE
     editCart: async (req, res) => {
+
         try {
-            const updatedCart = await Cart.update(
+                await Cart.update(
+
                 {
-                    where: {id: +req.params.cartId}
+                    quantity: req.body.quantity
                 },
                 {
-                    quanity: req.body.quantity
+                    where: {id: +req.params.cartId}
                 }
+                
             )
-            res.status(200).send(updatedCart)
+            res.sendStatus(200)
         } catch (error) {
             console.log('ERROR IN editCart')
             console.log(error)
             res.sendStatus(400)
         }
+        
+        
     },
 
     //DELETE
