@@ -7,8 +7,7 @@ const AuthScreen = () => {
    const [password, setPassword] = useState('')
    const [email, setEmail] = useState('')
    const [register, setRegister] = useState(true)
-   const [message, setMessage] = useState('')
-   const [display, setDisplay] = useState('')
+   
 
    const authCtx = useContext(AuthContext)
  
@@ -29,8 +28,7 @@ const AuthScreen = () => {
         authCtx.login(res.data.token, res.data.exp, res.data.userId)
       })
       .catch(err => {
-        setMessage(err.reponse.data)
-        setDisplay('block')
+        console.log(err)
         setPassword('')
         setUsername('')
         setEmail('')

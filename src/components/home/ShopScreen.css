@@ -1,0 +1,42 @@
+.cards {
+    display: flex;
+    justify-content: space-between;
+    flex-flow: wrap;
+
+}
+
+.card {
+    width: 350px;
+}
+
+.card-img-top {
+    object-fit:scale-down !important;
+    object-position: center !important;
+}
+
+img {
+    width: 350px;
+    height: 350px;
+  
+    object-position: center !important;
+}
+
+.dark-btn {
+    margin-top: 1em !important;
+}
+.card-price {
+    margin-bottom: 1em;
+    font-weight: 500;
+}
+
+.card-title {
+ font-weight: 700;
+}
+
+p.card-text {
+    line-height: 1.5em;
+}
+
+.card {
+    margin-bottom: 2em;
+}

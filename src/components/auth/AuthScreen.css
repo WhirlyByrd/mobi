@@ -1,0 +1,27 @@
+.auth {
+    display: flex;
+    height: 75vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth h1 {
+    font-size: 50px;
+    text-align: center;
+    font-weight: 800;
+    margin-bottom: 1em;
+
+}
+
+
+.form-input {
+    margin-bottom: 1em;
+}
+
+.form {
+    width:350px;
+}
+
+.btn {
+    margin-bottom: 1em;
+}

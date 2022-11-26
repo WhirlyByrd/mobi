@@ -87,7 +87,7 @@ const mappedProducts = products.map(product => {
       <Image className='card-image' src={product.img} alt={product.name}/>
         <Card.Body>
           <Card.Title>{product.name}</Card.Title>
-          <h4 className="card-title">${product.price * product.quantity}</h4>
+          <h4 className="card-price">${product.price * product.quantity}</h4>
           <Card.Text className="card-text">{product.desc}</Card.Text>
           </Card.Body>
 

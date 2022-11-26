@@ -1,0 +1,30 @@
+
+
+.details-container{
+    display: flex;
+    margin-top: 4em;
+    
+}
+
+.details-product-image {
+    object-fit:contain !important;
+    object-position: center !important;
+    margin-bottom: 1em;
+}
+
+.detail-name {
+    font-size: x-large;
+    font-weight: 700;
+    margin-bottom: .5em;
+}
+
+.detail-price {
+    font-size: Large;
+    font-weight: 500;
+    margin-bottom: 2em;
+}
+
+.detail-text {
+    line-height: 1.5em;
+    margin-bottom: 1em;
+}

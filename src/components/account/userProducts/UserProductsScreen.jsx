@@ -7,16 +7,21 @@ import {Button} from 'react-bootstrap'
 
 function UserProductsScreen() {
 
-  const {userId} = useContext(AuthContext)
-  const [products, setProducts] = useState([])
-  const navigate = useNavigate(AuthContext)
-  const {id} = useParams()
+  const {token, userId} = useContext(AuthContext);
+  const [products, setProducts] = useState([]);
+  const navigate = useNavigate(AuthContext);
+  const id = useParams()
+
+
+  
+
+    
 
   const goToDetail = (id) => {
         navigate(`/userProductDetail/${id}`)
-  },
+  }
 
-  newProduct = () => {
+  const newProduct = () => {
     navigate('/newProduct')
   }
 

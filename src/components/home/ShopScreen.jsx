@@ -3,6 +3,7 @@ import axios from 'axios'
 import {useNavigate, useParams} from 'react-router-dom'
 import AuthContext from '../../store/authContext'
 import './ShopScreen.css'
+import { Container, Card, Button} from 'react-bootstrap'
 
 const ShopScreen = () => {
 
@@ -38,29 +39,35 @@ const ShopScreen = () => {
   //map through products
   const mappedProducts = products.map(product => {
     return (
-      <div className="card" >
-        <img className="card-img-top" src={product.img} alt={product.name}/>
-        <div className="card-body">
-          <h3 className="card-title">{product.name}</h3>
-          <h4 className="card-title">{product.price}</h4>
-          <p className="card-text">{product.desc}</p>
-          <button onClick={() => goToDetail(product.id)} className="btn btn-primary">
+      
+      <Card className='card' key={product.id} >
+        <Card.Img className="card-img-top" src={product.img} alt={product.name}/>
+        <Card.Body>
+       
+          <Card.Title className="card-title">{product.name}</Card.Title>
+          <h3 className="card-price">${product.price}</h3>
+          
+          <Button variant="dark" className='dark-btn'
+          onClick={() => goToDetail(product.id)} >
             See Details
-          </button>
-        </div>
-      </div>
+          </Button>
+          </Card.Body>
+       
+      </Card>
     );
   })
 
 
   return mappedProducts.length >= 1 ? (
-    <main>
-      {mappedProducts}
-    </main>
+      <Container>
+      <div className='cards'>
+      {mappedProducts}   
+      </div>
+      </Container>
   ) : (
-    <main>
+    
       <h1>There are no products yet</h1>
-    </main>
+    
   )
 }
 
