@@ -3,7 +3,7 @@ import axios from 'axios'
 import {useNavigate, useParams} from 'react-router-dom'
 import AuthContext from '../../../store/authContext'
 import './UserProducts.css'
-import {Button} from 'react-bootstrap'
+import {Button, Container, Row, Card, Col} from 'react-bootstrap'
 
 function UserProductsScreen() {
 
@@ -47,17 +47,16 @@ function UserProductsScreen() {
 //map throught the products
 const mappedProducts = products.map(product => {
     return (
-      <div className="card" >
-        <img className="card-img-top" src={product.img} alt={product.name}/>
-        <div className="card-body">
-          <h3 className="card-title">{product.name}</h3>
-          <h4 className="card-title">{product.price}</h4>
-          <p className="card-text">{product.desc}</p>
-          <Button onClick={() => goToDetail(product.id)} >
+      <Card className="card" key={product.id}>
+        <Card.Img className="card-img-top" src={product.img} alt={product.name}/>
+        <Card.Body className="card-body">
+          <Card.Title className="card-title">{product.name}</Card.Title>
+          <h3 className="card-price">${product.price}</h3>
+          <Button variant='secondary' onClick={() => goToDetail(product.id)} >
             See Details
           </Button>
-        </div>
-      </div>
+        </Card.Body>
+      </Card>
     );
   })
 
@@ -66,15 +65,31 @@ const mappedProducts = products.map(product => {
 
   return mappedProducts.length >= 1 ? (
     <main>
-      <div><h1>My products</h1><button onClick={newProduct} >Add New Product</button></div>
-      <div>{mappedProducts}</div>
+      <Container className='container'>
+        <Row className='product-top-row'>
+          <Col>
+            <h1>My products</h1>
+          </Col>
+          <Col>
+          <div className='new-product-btn'>  
+            <Button variant="dark" onClick={newProduct}>
+               + Add New Product
+            </Button>
+          </div>
+          </Col>
+        </Row>
+        <div className="cards">{mappedProducts}</div>
+      </Container>
     </main>
   ) : (
     <main>
-      <div><h1>My products</h1><button onClick={newProduct}>Add New Product</button></div>
+      <div>
+        <h1>My products</h1>
+        <button onClick={newProduct}>Add New Product</button>
+      </div>
       <h2>You have no products yet</h2>
     </main>
-  )
+  );
 }
 
 

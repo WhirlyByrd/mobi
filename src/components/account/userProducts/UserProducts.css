@@ -1,0 +1,15 @@
+.product-top-row {
+    display: flex !important;
+    justify-content: space-between;
+    margin-top: 4em;
+    margin-bottom: 2em;
+}
+
+.product-top-row h1 {
+    font-size: xx-large;
+    font-weight: 700;
+}
+
+.new-product-btn {
+ float: right;
+}
