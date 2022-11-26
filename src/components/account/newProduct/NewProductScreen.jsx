@@ -2,7 +2,8 @@ import React, {useState, useContext} from 'react'
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
 import AuthContext from '../../../store/authContext'
-import {Form} from 'react-bootstrap'
+import {Form, Button, Card} from 'react-bootstrap'
+import './NewProductScreen.css'
 
 
 
@@ -37,34 +38,54 @@ function NewProductScreen() {
 
   return (
     <main>
+      <div className='form-container'>
+      <div className="form">  
+    
+      <h1>Create A New Product</h1>
       <Form onSubmit={handleSubmit} >
-
-        <input
+        <Form.Group className="mb-3">
+        <Form.Label>Image URL</Form.Label>
+        <Form.Control
         type='text'
         placeholder='Insert Image URL'
         value={img}
         onChange={e => setImage(e.target.value)}
         /> 
-        <input
+        </Form.Group>
+        <Form.Group className="mb-3">
+        <Form.Label>Product Name</Form.Label>
+        <Form.Control
         type='text'
         placeholder='Enter Product Name'
         value={name}
         onChange={e => setName(e.target.value)}
         />
-        <textarea
+        </Form.Group>
+        <Form.Group className="mb-3">
+        <Form.Label>Product Description</Form.Label>
+        <Form.Control
+        as="textarea"
         type='text'
         placeholder='Enter Product Description'
         value={desc}
         onChange={e => setDesc(e.target.value)}
         />
-        <input
+        </Form.Group>
+        <Form.Group className="mb-3">
+        <Form.Label>Product Price</Form.Label>
+        <Form.Control
         type='decimal'
-        placeholder='Enter Product Price'
         value={price}
         onChange={e => setPrice(e.target.value)}
         />
-        <button>Create Product</button>
+        </Form.Group>
+
+        <button className='dark-btn'>Create Product</button>
       </Form>
+      
+      
+     </div>
+      </div>
     </main>
   )
 }
