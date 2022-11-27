@@ -44,7 +44,7 @@ function ProductDetailScreen() {
     <main>
       <Container className='container'>
         <Row className='details-container'>
-        <Col><img className="details-product-image" src={product.img} alt={product.name}/></Col>
+        <Col><img className="card-img-top" src={product.img} alt={product.name}/></Col>
         <Col><div className="details">
         <h1 className="detail-name">{product.name}</h1>
         <h4 className="detail-price">${product.price}</h4>

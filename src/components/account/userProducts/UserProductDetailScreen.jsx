@@ -2,7 +2,8 @@ import {useState, useEffect, useContext} from 'react'
 import axios from 'axios'
 import { useParams, useNavigate } from 'react-router-dom'
 import AuthContext from '../../../store/authContext'
-import { Form, Card, Button } from 'react-bootstrap'
+import { Form, Card, Container, Row, Col } from 'react-bootstrap'
+import './UserProductDetailScreen.css'
 
 function UserProductDetailScreen() {
   const {token, userId} = useContext(AuthContext)
@@ -76,19 +77,29 @@ function UserProductDetailScreen() {
 
   return (
     <main>
+      <Container>
       {!editing ? (
-        <Card>
+        <Row className='details-container'>
+          <Col>
           <img className="card-img-top" src={product.img} alt={product.name} />
-          <div className="card-body">
-            <h3 className="card-title">{product.name}</h3>
-            <h4 className="card-title">{product.price}</h4>
-            <p className="card-text">{product.desc}</p>
-            <Button onClick={() => setEditing(!editing)}>Edit Product</Button>
-            <Button >Delete Prouct</Button>
+          </Col>
+          <Col>
+          <div className="details">
+            <h3 className="detail-name">{product.name}</h3>
+            <h4 className="detail-price">${product.price}</h4>
+            <p className="detail-text">{product.desc}</p>
+          
+            
+            <button className='dark-btn' onClick={() => setEditing(!editing)}>Edit Product</button>
+            
+            <button className='delete-btn'>Delete Product</button>
+            
+            
           </div>
-        </Card>
+          </Col>
+        </Row>
       ) : (
-        <Form onSubmit={updateProduct()}>
+        <Form onSubmit={updateProduct}>
           <input
             type="text"
             placeholder={product.img}
@@ -113,9 +124,10 @@ function UserProductDetailScreen() {
             value={price}
             onChange={(e) => setPrice(e.target.value)}
           />
-          <Button type='submit'>Update Product</Button>
+          <button>Update Product</button>
         </Form>
       )}
+     </Container>
     </main>
   );
 }

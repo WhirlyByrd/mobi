@@ -2,7 +2,7 @@ import React, {useState, useContext} from 'react'
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
 import AuthContext from '../../../store/authContext'
-import {Form, Button, Card} from 'react-bootstrap'
+import {Form} from 'react-bootstrap'
 import './NewProductScreen.css'
 
 

@@ -1,6 +1,8 @@
 import {useState, useContext} from 'react'
 import axios from 'axios'
 import AuthContext from '../../store/authContext'
+import {Form} from 'react-bootstrap'
+import './AuthScreen.css'
  
 const AuthScreen = () => {
    const [username, setUsername] = useState('')
@@ -38,37 +40,50 @@ const AuthScreen = () => {
  
    return (
        <main>
-           <h1>Hello!</h1>
-           <form className='form auth-form' onSubmit={submitHandler}>
-
-
-               <input
+            <div className='auth-form-container'>
+            <div className="auth-form">  
+           <h1>Welcome!</h1>
+           <Form onSubmit={submitHandler}>
+            <Form.Group className='mb-3'>
+               <Form.Control
                    className='form-input'
                    type='text'
                    placeholder='Username'
                    value={username}
                    onChange={e =>setUsername(e.target.value)}
                    />
-                <input
+            </Form.Group>
+
+            <Form.Group className='mb-3'>
+                <Form.Control
                    className='form-input'
                    type='text'
                    placeholder='Email'
                    value={email}
                    onChange={e =>setEmail(e.target.value)}
                    />
-                <input
+            </Form.Group>
+
+            <Form.Group className='mb-3'>
+                <Form.Control
                    className='form-input'
                    type='text'
                    placeholder='Password'
                    value={password}
                    onChange={e =>setPassword(e.target.value)}
                    />
+            </Form.Group>
                
-               <button className='form-btn'>
+            <Form.Group className='mb-3'>
+
+               <button className='dark-btn'>
                    {register ? 'Sign Up' : 'Login'}
                </button>
-           </form>
-           <button className='form-btn' onClick={() => setRegister(!register)}>Need to {register ? 'Login' : 'Sign Up'}?</button>
+            </Form.Group>
+           </Form>
+           <button className='light-btn' onClick={() => setRegister(!register)}>Need to {register ? 'Login' : 'Sign Up'}?</button>
+           </div>
+           </div>
        </main>
    )
 }

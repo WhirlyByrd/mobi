@@ -33,17 +33,18 @@
 }
 .navbar a{
     color: white;
-    font-size: 16px;
+    font-size: 18px;
+    letter-spacing: .05em;
     font-weight:700;
 	text-decoration: none;
 }
 
 .navbar a:hover {
-    color:#66D8F2;
+    color:rgb(252, 103, 245);
 }
 
 .navbar a.active {
-    color:#66D8F2 !important;
+    color:rgb(252, 103, 245) !important;
 }
 
 .navbar {

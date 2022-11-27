@@ -83,11 +83,21 @@ const mappedProducts = products.map(product => {
     </main>
   ) : (
     <main>
-      <div>
-        <h1>My products</h1>
-        <button onClick={newProduct}>Add New Product</button>
-      </div>
+      <Container>
+      <Row className='product-top-row'>
+          <Col>
+            <h1>My products</h1>
+          </Col>
+          <Col>
+          <div className='new-product-btn'>  
+            <Button variant="dark" onClick={newProduct}>
+               + Add New Product
+            </Button>
+          </div>
+          </Col>
+        </Row>
       <h2>You have no products yet</h2>
+      </Container>
     </main>
   );
 }
