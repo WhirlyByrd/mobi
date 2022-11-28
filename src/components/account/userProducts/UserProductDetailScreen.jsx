@@ -2,7 +2,7 @@ import {useState, useEffect, useContext} from 'react'
 import axios from 'axios'
 import { useParams, useNavigate } from 'react-router-dom'
 import AuthContext from '../../../store/authContext'
-import { Form, Card, Container, Row, Col } from 'react-bootstrap'
+import { Form, Container, Row, Col } from 'react-bootstrap'
 import './UserProductDetailScreen.css'
 
 function UserProductDetailScreen() {
@@ -23,9 +23,22 @@ function UserProductDetailScreen() {
   const [img, setImage] = useState(product.img)
   const [price, setPrice] = useState(product.price)
 
-  //price comes in as a NaN, how do I have it come in as a number?
   
 
+
+  useEffect(() => {
+    console.log(token)
+    axios.get(`${url}/userproduct/${id}/${userId}`, 
+    {
+    headers: {
+        authorization: token
+      }
+    })
+    .then(res => setProduct(res.data[0]))
+  })
+
+
+  //update the product
   const updateProduct = e => {
     e.preventDefault()
 
@@ -36,7 +49,7 @@ function UserProductDetailScreen() {
       desc,
       productId: product.id
     }
-    axios.put(`${url}/products/:id`, body,
+    axios.put(`${url}/products/${id}`, body,
     {
       headers: {
         authorization: token
@@ -50,29 +63,22 @@ function UserProductDetailScreen() {
   
   }
 
-  // const deleteProduct = (id) => {
-   
-  //   axios.delete(`${url}/products/${id}`, {
-  //       headers: {
-  //         authorization: token
-  //       }
-  //   })
-  //   .then(() => {
-  //     navigate('/userProducts')
-  //   })
-  //   .catch(err => console.log(err))
-  // }
+  //delete the product
 
-  useEffect(() => {
-    console.log(token)
-    axios.get(`${url}/userproduct/${id}/${userId}`, 
-    {
-    headers: {
-        authorization: token
-      }
+  const deleteProduct = (id) => {
+   
+    axios.delete(`${url}/products/${id}`, {
+        headers: {
+          authorization: token
+        }
     })
-    .then(res => setProduct(res.data[0]))
-  }, [])
+    .then(() => {
+      navigate('/userProducts')
+    })
+    .catch(err => console.log(err))
+  }
+
+  
 
 
   return (
@@ -92,7 +98,7 @@ function UserProductDetailScreen() {
             
             <button className='dark-btn' onClick={() => setEditing(!editing)}>Edit Product</button>
             
-            <button className='delete-btn'>Delete Product</button>
+            <button onClick={() => deleteProduct(product.id)} className='delete-btn'>Delete Product</button>
             
             
           </div>

@@ -81,30 +81,37 @@ const mappedProducts = products.map(product => {
     console.log(product)
     return (
      
-        
-      <Card style={{ width: '18rem' }} key={product.cartId} >
-      
-      <Image className='card-image' src={product.img} alt={product.name}/>
-        <Card.Body>
-          <Card.Title>{product.name}</Card.Title>
-          <h4 className="card-price">${product.price * product.quantity}</h4>
-          <Card.Text className="card-text">{product.desc}</Card.Text>
-          </Card.Body>
+      <Container key={product.cartId} >
+      <Row className='d-flex align-items-center justify-content-center'>
+      <Col lg={3}>
+      <Image className='card-img-top' src={product.img} alt={product.name}/>
+      </Col>
+      <Col lg>
+        <Row>
 
+          <Col>
+          <h1 className='card-title'>{product.name}</h1>
+          
+          </Col>
+          <Col>
+          
+          </Col>
+        </Row>
           <div className='card-btn-row'>
+          <h4>${(product.price * product.quantity).toFixed(2)}</h4>
           <div className='quantity-btns'>
           <Button variant="secondary" onClick={() => editCart(product.cartId, +product.quantity + 1)}>+</Button>
-          
           <div className='quantity'>{product.quantity}</div>
-          
-
           {product.quantity <= 1 ? (null) : (<Button variant="secondary" onClick={() => editCart(product.cartId, +product.quantity - 1)}>-</Button>)} 
           </div>
-          
           <Button variant="secondary" onClick={() => deleteCartItem(product.cartId)}>Delete</Button>
           </div>
-       
-      </Card>
+          
+      </Col>
+      <hr class="solid"></hr>        
+          </Row>
+          
+      </Container>
      
     );
   })
@@ -112,32 +119,40 @@ const mappedProducts = products.map(product => {
   return mappedProducts.length >= 1 ? (
     <main>
       <Container>
-        
-      <div className='cart-items'>
-
-      <div className='title'>
-        <h1>My Cart</h1>
-      </div>
-      
-      <div>
-        {mappedProducts}
-      </div>
-
-      </div>
+      <Row className='product-top-row'>
      
-
-      <Card className='cart-summary'>
+        <h1>My Cart</h1>
+      </Row>
+     
+      <Row>
+      <Col lg={8}>
+        {mappedProducts}
+      </Col>
+    
+     <Col lg={4}>
+     
+      <Container className='cart-summary'>
         <Card.Title>Cart Summary</Card.Title>
-        <Card.Text>By clicking check out, I agree to the terms & conditions and understand that all sales are final. Some restrictions apply for free shipping. Any applicable discounts or coupons will be reflected at checkout.
-        </Card.Text>
-
+        <p>By clicking check out, I agree to the terms & conditions and understand that all sales are final. Some restrictions apply for free shipping. Any applicable discounts or coupons will be reflected at checkout.
+        </p>
+        <hr class="solid"></hr>
         <div>
-          <Card.Subtitle>Subtotal</Card.Subtitle>
-          <Card.Text>${products.reduce((total, el) => total + (el.price * el.quantity), 0)}</Card.Text>
+          <Row>
+            <Col>
+          <h3>Subtotal</h3>
+            
+            </Col>
+            <Col>
+          <h3 className='subtotal'>${(products.reduce((total, el) => total + (el.price * el.quantity), 0).toFixed(2))}</h3>
+            </Col>
+          </Row>
+          <hr class="solid"></hr>
           <Button variant="dark">Check Out</Button>
         </div>
 
-      </Card>
+      </Container>
+     </Col>
+     </Row>
       
     
       
@@ -146,8 +161,10 @@ const mappedProducts = products.map(product => {
   ) : (
     <main>
       <Container>
-      <div><h1>My Cart</h1></div>
-      <h2>Cart is empty</h2>
+      <Row className='product-top-row'> 
+      <h1>My Cart</h1>
+      </Row>
+      <h2>Your cart is currently empty</h2>
       </Container>
     </main>
   )

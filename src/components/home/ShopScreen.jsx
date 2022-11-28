@@ -5,7 +5,7 @@ import AuthContext from '../../store/authContext'
 import './ShopScreen.css'
 import { Container, Card, Button} from 'react-bootstrap'
 
-const ShopScreen = () => {
+const ShopScreen = ({search}) => {
 
   const {userId} = useContext(AuthContext)
   const [products, setProducts] = useState([])
@@ -16,6 +16,7 @@ const ShopScreen = () => {
   const goToDetail = (id) => {
         navigate(`/productDetail/${id}`)
   }
+
 
 
   //do not show own products on the shop screen
@@ -37,7 +38,15 @@ const ShopScreen = () => {
   console.log(products)
 
   //map through products
-  const mappedProducts = products.map(product => {
+  const mappedProducts = products
+  .filter(product => {
+    if(search){
+      return product.name.toLowerCase().includes(search.toLowerCase())
+    } else {
+      return product
+    }
+  })
+  .map(product => {
     return (
       
       <Card className='card' key={product.id} >

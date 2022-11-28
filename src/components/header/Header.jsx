@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useContext, useState} from 'react'
 import {NavLink} from 'react-router-dom'
 import AuthContext from '../../store/authContext'
 import './Header.css'
@@ -12,6 +12,8 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 function Header() {
 
     const authCtx = useContext(AuthContext)
+
+    const [search, setSearch] = useState('')
     
   return (
     <Nav className="navbar navbar-expand-lg fixed-top navbarScroll">
@@ -36,8 +38,9 @@ function Header() {
               placeholder="Search"
               className="me-2"
               aria-label="Search"
+              onChange={(e) => setSearch(e.target.value)}
             />
-            <Button variant="outline-light">Search</Button>
+            <NavLink to={`/productSearch/${search}`}><Button variant="outline-light">Search</Button></NavLink>
           </Form>
           
         <nav>
@@ -51,11 +54,11 @@ function Header() {
         >CART</NavLink>  
         </li>
 
-        <li className="nav-link" >
+        {/* <li className="nav-link" >
         <NavLink className="nav-link"
         to='/account'
         >PROFILE</NavLink>  
-        </li>
+        </li> */}
 
         <li className="nav-link" >
         <NavLink className="nav-link"
@@ -65,7 +68,6 @@ function Header() {
 
         <li className="nav-link" >
         <NavLink className="nav-link"
-        
         onClick={() => authCtx.logout()}
         >LOGOUT</NavLink>  
         </li>

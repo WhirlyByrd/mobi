@@ -11,6 +11,7 @@ import CartScreen from './components/account/cart/CartScreen';
 import NewProductScreen from './components/account/newProduct/NewProductScreen';
 import ProductDetailScreen from './components/productDetail/ProductDetailScreen'
 import UserProductDetailScreen from './components/account/userProducts/UserProductDetailScreen'
+import SearchScreen from './components/search/SearchScreen'
 
 import {useContext} from 'react'
 import AuthContext from './store/authContext';
@@ -24,6 +25,8 @@ function App() {
 
       <Routes>
       <Route path='/' element={<HomeScreen />} />
+
+        <Route path='/productSearch/:search' element={<SearchScreen />} />
 
         <Route path='/productDetail/:id' element={<ProductDetailScreen />} />
         <Route path='/userProductDetail/:id' element={<UserProductDetailScreen />} />
