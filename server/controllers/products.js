@@ -50,10 +50,10 @@ module.exports = {
 
     getCurrentUserProductById: async (req, res) => {
         try {
-            
-            const {userId} = req.params
+            console.log(req.params)
+            const {userId, id} = req.params
             const product = await Product.findAll({
-                where: {userId}, include: [{
+                where: {userId, id}, include: [{
                     model: User,
                     required: true,
                     attributes: [`username`]

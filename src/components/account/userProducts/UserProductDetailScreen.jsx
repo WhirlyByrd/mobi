@@ -18,6 +18,7 @@ function UserProductDetailScreen() {
 
   //editing the product
   const [editing, setEditing] = useState(false)
+
   const [name, setName] = useState(product.name)
   const [desc, setDesc] = useState(product.desc)
   const [img, setImage] = useState(product.img)
@@ -35,7 +36,7 @@ function UserProductDetailScreen() {
       }
     })
     .then(res => setProduct(res.data[0]))
-  })
+  }, [])
 
 
   //update the product
@@ -55,7 +56,7 @@ function UserProductDetailScreen() {
         authorization: token
       }
     })
-    .then(() => {
+    .then(res => {
       setEditing(false)
       navigate('/userProducts')
     })
@@ -105,33 +106,57 @@ function UserProductDetailScreen() {
           </Col>
         </Row>
       ) : (
+        <div className='form-container'>
+      <div className="form">  
+      <h1>Edit Product: {product.name}</h1>
         <Form onSubmit={updateProduct}>
-          <input
+          <Form.Group className='mb-3'>
+          <Form.Label>Image URL</Form.Label>
+          <Form.Control
             type="text"
             placeholder={product.img}
             value={img}
             onChange={(e) => setImage(e.target.value)}
           />
-          <input
+          </Form.Group>
+          <Form.Group className='mb-3'>
+          <Form.Label>Product Name</Form.Label>
+
+          <Form.Control
             type="text"
             placeholder={product.name}
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
-          <textarea
+          </Form.Group>
+
+          <Form.Group className='mb-3'>
+          <Form.Label>Product Description</Form.Label>
+          <Form.Control
+            as="textarea"
             type="text"
             placeholder={product.desc}
             value={desc}
             onChange={(e) => setDesc(e.target.value)}
           />
-          <input
+
+          </Form.Group>
+
+          <Form.Group className="mb-3">
+          <Form.Label>Product Price</Form.Label>
+          <Form.Control
             type="decimal"
             placeholder={product.price}
             value={price}
             onChange={(e) => setPrice(e.target.value)}
           />
-          <button>Update Product</button>
+
+
+          </Form.Group>
+          <button className='dark-btn'>Update Product</button>
         </Form>
+      </div>
+      </div>
       )}
      </Container>
     </main>

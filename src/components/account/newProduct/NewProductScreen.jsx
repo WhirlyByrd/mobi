@@ -49,6 +49,7 @@ function NewProductScreen() {
         type='text'
         placeholder='Insert Image URL'
         value={img}
+        required
         onChange={e => setImage(e.target.value)}
         /> 
         </Form.Group>
@@ -58,6 +59,7 @@ function NewProductScreen() {
         type='text'
         placeholder='Enter Product Name'
         value={name}
+        required
         onChange={e => setName(e.target.value)}
         />
         </Form.Group>
@@ -68,6 +70,7 @@ function NewProductScreen() {
         type='text'
         placeholder='Enter Product Description'
         value={desc}
+        required
         onChange={e => setDesc(e.target.value)}
         />
         </Form.Group>
@@ -76,11 +79,12 @@ function NewProductScreen() {
         <Form.Control
         type='decimal'
         value={price}
+        required
         onChange={e => setPrice(e.target.value)}
         />
         </Form.Group>
 
-        <button className='dark-btn'>Create Product</button>
+        <button  className='dark-btn'>Create Product</button>
       </Form>
       
       
