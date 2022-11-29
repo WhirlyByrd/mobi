@@ -2,18 +2,20 @@
     display:flex;
     justify-content: space-around;
     align-items: center;
-    margin-bottom: 1em;
+    
 
 }
 .quantity-btns {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
 }
 
 .quantity {
     margin-left: .5em;
     margin-right: .5em;
+    
 }
 
 .card-image {
@@ -40,4 +42,8 @@
 
 .subtotal {
     text-align: right;
+}
+
+.solid {
+    margin-top: 1em;
 }

@@ -68,16 +68,13 @@ function Header() {
 
         <li className="nav-link" >
         <NavLink className="nav-link"
-        onClick={() => authCtx.logout()}
-        >LOGOUT</NavLink>  
+        onClick={() => authCtx.logout()}>LOGOUT</NavLink>  
         </li>
        </ul>
        ) : (
         <ul className="navbar-nav ">
         <li className="nav-link" >
-        <NavLink className="nav-link"
-        to='/auth'
-        >LOGIN</NavLink>  
+        <NavLink className="nav-link" to='/auth'>LOGIN</NavLink>  
         </li>
         </ul>
        )

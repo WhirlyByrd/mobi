@@ -83,30 +83,25 @@ const mappedProducts = products.map(product => {
      
       <Container key={product.cartId} >
       <Row className='d-flex align-items-center justify-content-center'>
-      <Col lg={3}>
+      <Col lg={2}>
       <Image className='card-img-top' src={product.img} alt={product.name}/>
       </Col>
-      <Col lg>
-        <Row>
-
-          <Col>
-          <h1 className='card-title'>{product.name}</h1>
-          
-          </Col>
-          <Col>
-          
-          </Col>
-        </Row>
+      <Col lg={5}>
           <div className='card-btn-row'>
+          <h1 className='card-title'>{product.name}</h1>
           <h4>${(product.price * product.quantity).toFixed(2)}</h4>
+          </div>
+      </Col>    
+      <Col lg={5}>
           <div className='quantity-btns'>
+
           <Button variant="secondary" onClick={() => editCart(product.cartId, +product.quantity + 1)}>+</Button>
           <div className='quantity'>{product.quantity}</div>
           {product.quantity <= 1 ? (null) : (<Button variant="secondary" onClick={() => editCart(product.cartId, +product.quantity - 1)}>-</Button>)} 
-          </div>
           <Button variant="secondary" onClick={() => deleteCartItem(product.cartId)}>Delete</Button>
           </div>
-          
+        </Col>
+        <Col lg={1}>  
       </Col>
       <hr class="solid"></hr>        
           </Row>

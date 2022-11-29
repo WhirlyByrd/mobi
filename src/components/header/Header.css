@@ -25,14 +25,14 @@
     margin-right:10px;
 }
 .navbarScroll.navbarDark {
-    background-color: rgb(0, 0, 0);
+    background-color: #212529;
     background-position: center;
     
     
    
 }
 .navbar a{
-    color: white;
+    color: white !important;
     font-size: 18px;
     letter-spacing: .05em;
     font-weight:700;
@@ -40,15 +40,15 @@
 }
 
 .navbar a:hover {
-    color:rgb(252, 103, 245);
+    color:rgb(252, 103, 245) !important;
 }
 
-.navbar a.active {
+.navbar a:active {
     color:rgb(252, 103, 245) !important;
 }
 
 .navbar {
-    background-color: rgb(0, 0, 0);
+    background-color: #212529;
 }
 
 .navbar-toggler-icon {
