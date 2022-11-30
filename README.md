@@ -7,21 +7,21 @@ Mobi is an eCommerce/marketplace web app that was built using React, Javascript,
 Watch the demo: https://www.youtube.com/watch?v=DxyAlTgk8WQ
 
 ## MVP
-Users can create an account 
-Users can log in/logout
-Users can view the main shop page
-Users can navigate to the item detail page
-Users can search for items
-Users can add items to the cart
-Users can edit items in the cart
-Users can see the cart total
-The seller can add items to sell 
-Sellers can add photo(s)
-Sellers can add Title
-Sellers can add a description
-Sellers can set the price
-Sellers can edit item info
-Sellers can remove the item
+* Users can create an account 
+* Users can log in/logout
+* Users can view the main shop page
+* Users can navigate to the item detail page
+* Users can search for items
+* Users can add items to the cart
+* Users can edit items in the cart
+* Users can see the cart total
+* The seller can add items to sell 
+* Sellers can add photo(s)
+* Sellers can add Title
+* Sellers can add a description
+* Sellers can set the price
+* Sellers can edit item info
+* Sellers can remove the item
 
 ## Screenshots
 
