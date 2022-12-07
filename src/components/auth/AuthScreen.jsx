@@ -46,6 +46,7 @@ const AuthScreen = () => {
            <Form onSubmit={submitHandler}>
             <Form.Group className='mb-3'>
                <Form.Control
+                    required
                    className='form-input'
                    type='text'
                    placeholder='Username'
@@ -56,8 +57,9 @@ const AuthScreen = () => {
 
             <Form.Group className='mb-3'>
                 <Form.Control
+                    required
                    className='form-input'
-                   type='text'
+                   type='email'
                    placeholder='Email'
                    value={email}
                    onChange={e =>setEmail(e.target.value)}
@@ -66,8 +68,9 @@ const AuthScreen = () => {
 
             <Form.Group className='mb-3'>
                 <Form.Control
+                    required
                    className='form-input'
-                   type='text'
+                   type='password'
                    placeholder='Password'
                    value={password}
                    onChange={e =>setPassword(e.target.value)}
